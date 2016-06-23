@@ -49,6 +49,21 @@ console.log(me.PROFILE)
 
 
 
+// watch this ...
+class C {
+    // you can declare class fields right in the constructor
+    // by setting their accessibility
+    constructor(public PUB:string, private _priv:number) {}
+    get priv ():number { return this._priv }
+
+    // it's not best-practice, cuz it's not so clear ...
+    // but hey ... it's cool and you can use it :P
+ }
+let c = new C("PUBLIC STRING", 1337);
+console.log(c.PUB)
+console.log(c.priv)
+
+
 // enums are cool
 enum ENV {
     Production, Development, Testing
