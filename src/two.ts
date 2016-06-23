@@ -42,6 +42,11 @@ you.surname = 'Tashromt'
 
 class Admin extends User {
     public PROFILE: string = 'https://github.com/IOAyman'
+
+    // this is not necessary ... but just to show the super()
+    constructor (name:string) {
+        super(name)
+    }
 }
 
 let me = new Admin('Ayman')
