@@ -1,28 +1,59 @@
+/*------------------------------------------------------------*\
+|                VARIABLES
+\*------------------------------------------------------------*/
+
 
 // use let to define/declare variables
 let zero        // zero may have any type of values
 let one: any    // same as zero
-let two: string
+var two: string // you can use 'var' if you want
 let three: boolean
 let four: number = 4
 
 zero = 'Hello'
 zero += ', '
+console.log('zero['+ typeof zero +']=' + zero)
 
 one = zero + ' World!'
 one = true
+console.log('one['+ typeof one +']=' + one)
 
 two = zero + 'Aghlane!'
 two += 1         // not an error. it's a concatenation
+console.log('two['+ typeof two +']=' + two)
 // two = true    // error!
 
+three = !true
 // three = two   // error!
+console.log('three['+ typeof three +']=' + three)
 
 four += 4
 // four = three  // error!
+console.log('four['+ typeof four +']=' + four)
 
 
 
+
+
+/*------------------------------------------------------------*\
+|                LOOPS
+\*------------------------------------------------------------*/
+
+
+// watch out for this gotcha!
+let list = ['one','two','three','four']
+// (i IN list) iterates over keys
+for (let i in list) console.log(i)
+// (i OF list) iterates over values
+for (let i of list) console.log(i)
+
+
+
+
+
+/*------------------------------------------------------------*\
+|                FUNCTIONS
+\*------------------------------------------------------------*/
 
 
 // function return types
