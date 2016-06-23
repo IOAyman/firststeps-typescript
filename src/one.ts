@@ -46,6 +46,17 @@ let list = ['one','two','three','four']
 for (let i in list) console.log(i)
 // (i OF list) iterates over values
 for (let i of list) console.log(i)
+/*
+Targeting ES5 and ES3
+
+When targeting an ES5 or ES3, iterators are only allowed on values
+of Array type. It is an error to use for..of loops on non-Array
+values (such as Maps and Sets), even if these non-Array values
+implement the Symbol.iterator property.
+
+@see
+http://www.typescriptlang.org/docs/handbook/iterators-and-generators.html
+*/
 
 
 
