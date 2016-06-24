@@ -94,11 +94,13 @@ http://www.typescriptlang.org/docs/handbook/iterators-and-generators.html
 function mod(x:number, y:number): number {
     return x % y
 }
+console.log('-15 mod 5 is ' + mod(-15, 7))
 
 function isPair(z:number): boolean {
     // return mod(z, 2)     // error!
     return mod(z, 2) === 0
 }
+console.log(333 + ' is ' + (isPair(333)? '' : 'not ') + 'pair')
 
 // Array<string> === string[]
 function addToFront (value, list: Array<string>): string[] {
@@ -108,16 +110,20 @@ function addToFront (value, list: Array<string>): string[] {
         a.push(v)
     return a
 }
+console.log('addToFront(1,["9","0"])=>' + addToFront(1, ["9","0"]))
 
 // x can be either a number or a string
 // the callback must be a function that takes a boolean and returns nothing
 function isOdd(x:number|string, callback: (boolean)=>void) {
-    if(typeof x !== 'number') {
+    if(typeof x !== 'number')
         // forcing the type of x to be a string
         x = parseInt( <string> x )
-    }
-    return !isPair( <number> x )
+    if (callback)
+        callback(!isPair(<number>x))
 }
+isOdd('333', function (isOdd) {
+    console.log(333 + ' is ' + (isOdd? '' : 'not ') + 'odd')
+})
 
 // you can *Optionaly* pass an options object
 // name and surname are required, but the age is optional
@@ -125,7 +131,11 @@ function whoami(options?:{name:string,surname:string,age?:number}) {
     let msg:string = 'Hello, '
     if(options) {
         msg += options.name + ' ' + options.surname
-        console.debug('this guy is ' + options.age + 'yo')
+        console.log(options.name + ' ' + options.surname + 
+            ' is ' + (options.age || 'Unknown ') + 'yo')
     }
     console.log(msg)
 }
+whoami()
+whoami({name: "Intellijent", surname: "son of dumb"})
+whoami({name: "Dumb", surname: "son of intellijent", age: 99})
