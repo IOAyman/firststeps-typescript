@@ -121,7 +121,8 @@ function isOdd(x:number|string, callback: (boolean)=>void) {
     if (callback)
         callback(!isPair(<number>x))
 }
-isOdd('333', function (isOdd) {
+// yeah! Lambdas are COOL!
+isOdd('333', (isOdd) => {
     console.log(333 + ' is ' + (isOdd? '' : 'not ') + 'odd')
 })
 
