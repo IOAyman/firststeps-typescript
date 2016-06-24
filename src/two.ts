@@ -95,7 +95,15 @@ function doSomething(ops: Options) {
 
 
 namespace IONamespace {
-    // You must *export* for use out of the namespace
+    // basic decorator
+    function Admin(target) {
+        // manipulate target data
+        target.something = 'this is set by the @Admin decorator'
+        console.log(target.something)
+    }
+
+    @Admin
+    // must *export* for use out of the namespace
     export class User {
         public something
         constructor() { console.log('new IONamespace.User') }
