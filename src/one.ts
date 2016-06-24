@@ -6,7 +6,7 @@
 // use let to define/declare variables
 let zero        // zero may have any type of values
 let one: any    // same as zero
-var two: string // you can use 'var' if you want
+var two: string // you can use 'var' if you want (but don't!)
 let three: boolean
 let four: number = 4
 
@@ -32,13 +32,31 @@ four += 4
 console.log('four['+ typeof four +']=' + four)
 
 
+const CONSTANT = 0x10
+// CONSTANT = 16 // error!
+console.log('CONSTANT[' + typeof CONSTANT + ']=' + CONSTANT)
+
+
 
 
 
 /*------------------------------------------------------------*\
-|                LOOPS
+|                Gotchas
 \*------------------------------------------------------------*/
 
+
+//~~~~~~> VAR vs LET
+/*
+    TL;DR
+    Don't use 'var', use 'let'
+
+To learn more about variable declaration, **decomposition and distruction**
+@see
+http://www.typescriptlang.org/docs/handbook/variable-declarations.html
+*/
+
+
+//~~~~~~> LOOPS
 
 // watch out for this gotcha!
 let list = ['one','two','three','four']
