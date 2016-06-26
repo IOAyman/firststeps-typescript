@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "charset": "utf-8",
+        "pretty": true,
+        "watch": true,
+        "project": ".",
+        "outDir": "../build/node"
+    },
+
+    "exclude": ["node_modules"]
+}
