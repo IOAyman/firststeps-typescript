@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "charset": "utf-8",
+        "experimentalDecorators": true,
+        "pretty": true,
+        "watch": true,
+        "outDir": "../build/express"
+    },
+    
+    "files": [
+        "./one.ts",
+        "./two.ts",
+        "./three.ts",
+        "./three.module.ts"
+    ]
+}
