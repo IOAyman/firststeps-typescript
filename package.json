@@ -1,0 +1,39 @@
+{
+  "name": "typescript-firststeps",
+  "version": "1.0.0",
+  "description": "Some code I built when I was learning Typescript",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.5.2",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^2.13.6",
+    "gulp-uglify": "^1.5.4",
+    "nodemon": "^1.9.2"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IOAyman/firststeps-typescript.git"
+  },
+  "keywords": [
+    "typescript",
+    "basics",
+    "nodejs",
+    "node",
+    "express",
+    "expressjs",
+    "mongoose"
+  ],
+  "author": "Ayman Nedjmeddine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IOAyman/firststeps-typescript/issues"
+  },
+  "homepage": "https://github.com/IOAyman/firststeps-typescript#readme"
+}
