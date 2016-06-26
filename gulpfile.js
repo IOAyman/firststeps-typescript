@@ -13,7 +13,7 @@ var node = {
                     module: "commonjs"
                 }),
     "src": ["./node/*.ts", "./node/express/*.ts"],
-    "dest": "../build/node"
+    "dest": "./build/node"
 }
 
 
