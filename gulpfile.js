@@ -14,7 +14,7 @@ var node = {
     "project": tsc.createProject('./node/tsconfig.json', {
                     module: "commonjs"
                 }),
-    "src": ["./node/*.ts", "./node/express/*.ts"],
+    "src": "./node/**/*.ts",
     "build": "./build/node",
     "dist": "./dist/node"
 }
@@ -38,7 +38,7 @@ gulp.task('build-basics', ['tsc-basics'], function() {
       .pipe(gulp.dest(basics.dist));
 });
 gulp.task('build-node', ['tsc-node'], function() {
-    return gulp.src(node.build + '**/*.js')
+    return gulp.src(node.build + '/**/*.js')
       .pipe(uglify())
       .pipe(gulp.dest(node.dist));
 });
