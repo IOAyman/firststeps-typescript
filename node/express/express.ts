@@ -1,14 +1,16 @@
-/// <reference path="../../typings/node/node.d.ts"/>
-/// <reference path="../../typings/express/express.d.ts"/>
-/// <reference path="../../typings/morgan/morgan.d.ts"/>
+/// <reference path="../../typings/tsd.d.ts"/>
 
 import express = require("express")
 import logger = require("morgan")
+import bodyParser = require("body-parser")
+
 
 // setup
 const PORT = process.env.PORT || 8000
 let app = express()
 let router = express.Router()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 // server
 app.listen(PORT, ()=>{
