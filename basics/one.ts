@@ -43,6 +43,7 @@ console.log('CONSTANT[' + typeof CONSTANT + ']=' + CONSTANT)
 /*------------------------------------------------------------*\
 |                Gotchas
 \*------------------------------------------------------------*/
+console.log('----------------------------')
 
 
 //~~~~~~> VAR vs LET
@@ -50,7 +51,7 @@ console.log('CONSTANT[' + typeof CONSTANT + ']=' + CONSTANT)
     TL;DR
     Don't use 'var', use 'let'
 
-To learn more about variable declaration, **decomposition and distruction**
+To learn more about variable declaration
 @see
 http://www.typescriptlang.org/docs/handbook/variable-declarations.html
 */
@@ -83,6 +84,7 @@ http://www.typescriptlang.org/docs/handbook/iterators-and-generators.html
 /*------------------------------------------------------------*\
 |                FUNCTIONS
 \*------------------------------------------------------------*/
+console.log('----------------------------')
 
 
 // function return types
@@ -121,7 +123,7 @@ function isOdd(x:number|string, callback: (boolean)=>void) {
     if (callback)
         callback(!isPair(<number>x))
 }
-// yeah! Lambdas are COOL!
+// yeah! Lambdas/Arrow funcions are COOL!
 isOdd('333', (isOdd) => {
     console.log(333 + ' is ' + (isOdd? '' : 'not ') + 'odd')
 })
@@ -140,3 +142,82 @@ function whoami(options?:{name:string,surname:string,age?:number}) {
 whoami()
 whoami({name: "Intellijent", surname: "son of dumb"})
 whoami({name: "Dumb", surname: "son of intellijent", age: 99})
+
+
+
+
+
+/*------------------------------------------------------------*\
+|                WEIRD & FUN
+\*------------------------------------------------------------*/
+console.log('----------------------------')
+
+//  Destructuring Objects
+const o = {
+    iguen: 1,
+    sen: 'two',
+    tchard: { name: 3 }
+}
+console.log(JSON.stringify(o))
+
+// extracting only a couple of properties into two separate vars
+let { iguen, sen } = o
+console.log(`iguen => ${iguen}, sen => ${sen}`)
+
+// let's try something
+// let { IGUEN, SEN } = o
+// console.log(`IGUEN => ${IGUEN}, SEN => ${SEN}`)
+
+/* that didn't work, right? you got undefined
+ * variable names MUST match the property names you want to extract
+ * 
+ * but,
+ * I don't this behaviour! it may get a little confusing :/
+ */
+
+// ok, this is how you do it;  assigning to new var names
+let { tchard:tlata } = o
+console.log(`tchard.name => ${tlata.name}`)
+
+
+// so let's say you are Constructing an object
+const oo = {
+    iguen,
+    tlata
+}
+// this is exactly like saying
+// oo = { one: one,  tlata: tlata }
+console.log(oo)
+
+
+// let's try some cool use cases, shall we?
+
+/* say you wanna print out some guy's info
+ * and you offer to prettify the output
+ * normally you would do something like
+ * function (name, country, profession, pretty)
+ * 
+ * but wouldn't it be more logical to group the info 
+ * together, and the options together?
+ */
+
+// something like this
+function whois( {name, birthdate:b=new Date(1962), country, profession}, cb? ){
+    let msg = `
+Hi, I am ${name.toUpperCase()}, ${country} ${profession}.
+I've been around since ${b.getYear()}s.
+`
+    if (cb) (cb(msg))
+    else console.log(msg)
+}
+
+// see?  Very Cool!
+// we changed the order of arguments
+// have default value for birthdate
+// and even property renaming as well birthdate => b
+whois({
+    profession: 'dev',
+    name: 'Iblis',
+    country: 'DZ'
+})
+
