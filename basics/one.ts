@@ -233,7 +233,12 @@ console.log(arr)
 
 let [ st, nd ] = arr
 console.log(`st:${typeof st} => ${st}, nd:${typeof nd} => ${nd}`)
-; //------------------------------------------------------------------------
+;
+/* that previous semicolon MUST explicitly written
+ * 
+ * @see
+ * https://github.com/Microsoft/TypeScript/issues/9779
+ */
 
 // swapping st and nd
 [ st, nd ] = [ nd, st ]
@@ -251,7 +256,13 @@ let HEAD:any, TAIL:any
 [ HEAD, ...TAIL ] = arr2
 console.log(`HEAD: ${HEAD}, TAIL:[${TAIL}]`)
 console.log(`HEAD:${typeof HEAD} => ${HEAD}, TAIL:${typeof TAIL} => ${TAIL}`)
-; //------------------------------------------------------------------------
+;
+/* that previous semicolon MUST explicitly written
+ * 
+ * @see
+ * https://github.com/Microsoft/TypeScript/issues/9779
+ */
+
 // swapping HEAD and TAIL
 [ HEAD, TAIL ] = [ TAIL, HEAD ]
 console.log(`HEAD:${typeof HEAD} => ${HEAD}, TAIL:${typeof TAIL} => ${TAIL}`)
@@ -279,3 +290,16 @@ const someobj = {
     [ pre + 'prop2' ]: TAIL
 }
 console.log(JSON.stringify(someobj))
+
+
+/* 
+
+    Where to learn more about this
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+http://www.typescriptlang.org/docs/handbook/variable-declarations.html
+
+part 1 : https://youtu.be/AfWYO8t7ed4
+part 2 : https://youtu.be/LmL0Gh193M0
+*/
