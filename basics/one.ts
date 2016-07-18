@@ -165,7 +165,7 @@ let { iguen, sen } = o
 console.log(`iguen => ${iguen}, sen => ${sen}`)
 
 // let's try something
-// let { IGUEN, SEN } = o
+// let { IGUEN, SEN } = o   ----------------------
 // console.log(`IGUEN => ${IGUEN}, SEN => ${SEN}`)
 
 /* that didn't work, right? you got undefined
@@ -202,10 +202,10 @@ console.log(oo)
  */
 
 // something like this
-function whois( {name, birthdate:b=new Date(1962), country, profession}, cb? ){
+function whois( {name, birthdate:b=new Date('7/5/62'), country, profession}, cb? ){
     let msg = `
 Hi, I am ${name.toUpperCase()}, ${country} ${profession}.
-I've been around since ${b.getYear()}s.
+I've been around since ${b.getUTCFullYear()}.
 `
     if (cb) (cb(msg))
     else console.log(msg)
@@ -221,3 +221,61 @@ whois({
     country: 'DZ'
 })
 
+
+
+console.log('----------------------------')
+
+
+//  Destructuring Arrays
+
+const arr = ['1', '2', '9/3', 'Viva', 'Dz']
+console.log(arr)
+
+let [ st, nd ] = arr
+console.log(`st:${typeof st} => ${st}, nd:${typeof nd} => ${nd}`)
+; //------------------------------------------------------------------------
+
+// swapping st and nd
+[ st, nd ] = [ nd, st ]
+console.log(`st:${typeof st} => ${st}, nd:${typeof nd} => ${nd}`)
+// or you can use this for multiple declares
+// and even do default values with that
+const [ const1, const2, const3=999 ] = [ 0, 1 ]
+console.log('CONSTs:', const1,const2,const3)
+
+
+
+const arr2 = ['1', 2, 9/3, 'Viva', 'Dz']
+
+let HEAD:any, TAIL:any
+[ HEAD, ...TAIL ] = arr2
+console.log(`HEAD: ${HEAD}, TAIL:[${TAIL}]`)
+console.log(`HEAD:${typeof HEAD} => ${HEAD}, TAIL:${typeof TAIL} => ${TAIL}`)
+; //------------------------------------------------------------------------
+// swapping HEAD and TAIL
+[ HEAD, TAIL ] = [ TAIL, HEAD ]
+console.log(`HEAD:${typeof HEAD} => ${HEAD}, TAIL:${typeof TAIL} => ${TAIL}`)
+
+
+
+// this is cool in many cases
+// one could be functions
+function list0( [st, nd, rd] : [number, string, any] ):void {
+    console.log(st, nd, rd)
+}
+list0( [1, '3', 9/3] )
+
+// parse function return
+function list1(){
+    return ['top', 'secret', {}]
+}
+const [ u, p, s ] = list1()
+console.log(`u:${u}, p:${p}, s:${s}`)
+
+// another use case it contrcuting property names for objects
+let pre = 'pre-'
+const someobj = {
+    [ pre + 'prop1' ]: HEAD,
+    [ pre + 'prop2' ]: TAIL
+}
+console.log(JSON.stringify(someobj))
