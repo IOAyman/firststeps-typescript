@@ -1,7 +1,7 @@
 // exporting a class
 export class PartOne {
     constructor (name?:string) {
-        console.log("PartOne instantiated by [" + (name||'Unknown') + "]")
+        console.log(`PartOne instantiated by [${(name||'Unknown')}]`)
     }
 }
 

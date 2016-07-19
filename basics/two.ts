@@ -22,7 +22,7 @@ class User {
 
     // public/private methods
     public present() {
-        console.log('Hi, my name is ' + this._name + ' ' + this._surname)
+        console.log(`Hi, my name is ${this._name} ${this._surname || ''}`)
     }
 
     // a function may even be static

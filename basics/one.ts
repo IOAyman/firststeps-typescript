@@ -33,7 +33,7 @@ console.log('four['+ typeof four +']=' + four)
 
 
 const CONSTANT = 0x10
-// CONSTANT = 16 // error!
+// CONSTANT = 16 // error! cannot re-assign const
 console.log('CONSTANT[' + typeof CONSTANT + ']=' + CONSTANT)
 
 
@@ -93,6 +93,25 @@ http://www.typescriptlang.org/docs/handbook/iterators-and-generators.html
 
 
 
+
+// don't you get tired of concatenating strings that way! Boring!
+
+// string templates
+console.log(`
+
+Hello, ${'Wxoxrxlxd'.split('x').reduce((prev, curr) => curr === 'x' ? prev : prev.concat(curr))}!
+
+As you may see ... wrapping text with tics \`
+lets you evaluate \${/*any code put here*/}
+
+One other great thing is,
+forget about those +es at the end of each line.. for multi-line string ;)
+
+`)
+
+
+
+
 /*------------------------------------------------------------*\
 |                FUNCTIONS
 \*------------------------------------------------------------*/
@@ -108,13 +127,13 @@ console.log('----------------------------')
 function mod(x:number, y:number): number {
     return x % y
 }
-console.log('-15 mod 5 is ' + mod(-15, 7))
+console.log(`-15 mod 5 is ${mod(-15, 7)}`)
 
 function isPair(z:number): boolean {
     // return mod(z, 2)     // error!
     return mod(z, 2) === 0
 }
-console.log(333 + ' is ' + (isPair(333)? '' : 'not ') + 'pair')
+console.log(`333 is ${(isPair(333)? '' : 'not ')} pair`)
 
 // Array<string> === string[]
 function addToFront (value, list: Array<string>): string[] {
@@ -124,7 +143,7 @@ function addToFront (value, list: Array<string>): string[] {
         a.push(v)
     return a
 }
-console.log('addToFront(1,["9","0"])=>' + addToFront(1, ["9","0"]))
+console.log(`addToFront(1,["9","0"]) => [${addToFront(1, ["9","0"])}]`)
 
 // x can be either a number or a string
 // the callback must be a function that takes a boolean and returns nothing
@@ -137,7 +156,7 @@ function isOdd(x:number|string, callback: (boolean)=>void) {
 }
 // yeah! Lambdas/Arrow funcions are COOL!
 isOdd('333', (isOdd) => {
-    console.log(333 + ' is ' + (isOdd? '' : 'not ') + 'odd')
+    console.log(`333 is ${(isOdd? '' : 'not ')} odd`)
 })
 
 // you can *Optionaly* pass an options object
@@ -146,8 +165,7 @@ function whoami(options?:{name:string,surname:string,age?:number}) {
     let msg:string = 'Hello, '
     if(options) {
         msg += options.name + ' ' + options.surname
-        console.log(options.name + ' ' + options.surname + 
-            ' is ' + (options.age || 'Unknown ') + 'yo')
+        console.log(`${options.name} ${options.surname} is ${(options.age || 'Unknown ')} yo`)
     }
     console.log(msg)
 }
