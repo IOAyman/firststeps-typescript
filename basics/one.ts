@@ -57,6 +57,18 @@ http://www.typescriptlang.org/docs/handbook/variable-declarations.html
 */
 
 
+
+//~~~~~~> Auto Semicolon Insertion
+/*
+
+There could be some gotchas
+
+TS ASI uses JavaScript's
+http://www.ecma-international.org/ecma-262/6.0/#sec-rules-of-automatic-semicolon-insertion
+*/
+
+
+
 //~~~~~~> LOOPS
 
 // watch out for this gotcha!
